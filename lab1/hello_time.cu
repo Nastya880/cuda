@@ -4,7 +4,7 @@
 
 constexpr const size_t N = 1024 * 1024;
 
-__global__ void kernel(float* data)
+__global__ void kernel()
 {
 }
 
