@@ -1,4 +1,3 @@
-%%writefile matrixMult.cu
 #include "cuda_runtime.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -45,13 +44,13 @@ int main()
     }
     
     int *d_A = NULL;
-    cudaMalloc((void **)&d_A, Asize);
+    cudaMalloc((void **)&d_A, ABCsize);
     
     int *d_B = NULL;
-    cudaMalloc((void **)&d_B, Bsize);
+    cudaMalloc((void **)&d_B, ABCsize);
     
     int * d_C = NULL;
-    cudaMalloc((void **)&d_C, Csize);
+    cudaMalloc((void **)&d_C, ABCsize);
     cudaMemcpy(d_A, h_A, ABCsize, cudaMemcpyHostToDevice);
     cudaMemcpy(d_B, h_B, ABCsize, cudaMemcpyHostToDevice);
  
@@ -68,7 +67,7 @@ int main()
     cudaEventElapsedTime(&KernelTime, start, stop);
     printf("KernelTime: %.2f milliseconds\n", KernelTime);
     
-    cudaMemcpy(h_C, d_C, Csize, cudaMemcpyDeviceToHost);
+    cudaMemcpy(h_C, d_C, ABCsize, cudaMemcpyDeviceToHost);
     
     printf("MULTIPLICATE\n");
     for (int i = 0; i < N; i++)
