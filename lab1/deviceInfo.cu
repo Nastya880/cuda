@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cuda_runtime.h>
 #include <chrono>
+
 int main (int argc, char * argv [] )
 {
     int deviceCount;
@@ -27,7 +28,6 @@ int main (int argc, char * argv [] )
                 devProp.maxThreadsDim[1], devProp.maxThreadsDim[2] );
         printf ("Max Grid Size : %d %d %d\n", devProp.maxGridSize [0],
                 devProp.maxGridSize [1], devProp.maxGridSize [2]);
-        printf("");
     }
     return 0;
 }
